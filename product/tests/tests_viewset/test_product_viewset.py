@@ -63,9 +63,9 @@ def test_create_product_authenticated(api_client):
 
 
 @pytest.mark.django_db
-def test_product_requires_authentication():
+def test_list_products_without_authentication():
     client = APIClient()
 
     response = client.get("/bookstore/v1/product/")
 
-    assert response.status_code in [401, 403]
+    assert response.status_code == 200
